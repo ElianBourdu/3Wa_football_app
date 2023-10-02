@@ -7,13 +7,15 @@ import { useState } from 'react';
 function App() {
 
   const [players, setPlayers] = useState([]);
+  const [form, setForm] = useState(false);
+  const [modify, setModify] = useState([]);
 
   return (
     <>
       <Header/>
       <main>
-        <NewPlayerForm setPlayers={setPlayers} players={players}/>
-        <Players players={players}/>
+        <NewPlayerForm setPlayers={setPlayers} players={players} form={form} modify={modify}/>
+        <Players players={players} setPlayers={setPlayers} form={form} setForm={setForm} modify={modify} setModify={setModify}/>
       </main>
     </>
   )
