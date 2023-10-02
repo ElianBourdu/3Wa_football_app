@@ -5,12 +5,20 @@ export default function Players(players) {
     <>
       {players.players.length !== 0 ? (players.players.map(player =>
           (
-            <div key={player.playerFirstName}>
-              <p>{player.playerFirstName}</p>
-              <p>{player.playerLastName}</p>
-              <p>{player.playerAge}</p>
-              <p>{player.playerRole}</p>
-            </div>
+            <>
+              <div className={"player__header"}>
+                <p>player first name:</p>
+                <p>player last name:</p>
+                <p>player age: </p>
+                <p>player role: </p>
+              </div>
+              <div key={player.playerFirstName} className={"player"}>
+                <p>{player.playerFirstName}</p>
+                <p>{player.playerLastName}</p>
+                <p>{player.playerAge}</p>
+                <p>{player.playerRole}</p>
+              </div>
+            </>
           )
         ))
         :

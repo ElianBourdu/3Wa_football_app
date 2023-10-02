@@ -11,8 +11,10 @@ function App() {
   return (
     <>
       <Header/>
-      <NewPlayerForm setPlayers={setPlayers} players={players}/>
-      <Players players={players}/>
+      <main>
+        <NewPlayerForm setPlayers={setPlayers} players={players}/>
+        <Players players={players}/>
+      </main>
     </>
   )
 }
