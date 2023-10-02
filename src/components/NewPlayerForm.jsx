@@ -1,12 +1,11 @@
 import { useState } from "react"
 
-export default function NewPlayerForm({players, setPlayers, form, modify}) {
+export default function NewPlayerForm({players, setPlayers, pendingModification, setPendingModification, updateUser, setUpdateUser}) {
 
   const [playerFirstName, setPlayerFirstName] = useState('')
   const [playerLastName, setPlayerLastName] = useState('')
   const [playerAge, setPlayerAge] = useState('')
   const [playerRole, setPlayerRole] = useState('')
-  
 
   const handleSubmit = e => {
     // @todo check input
@@ -19,27 +18,29 @@ export default function NewPlayerForm({players, setPlayers, form, modify}) {
     setPlayerRole('');
   }
 
-  const handleModify = e => {
+  const handleUpdateUser = e => {
     e.preventDefault();
     setPlayers([...players, {playerFirstName, playerLastName, playerAge, playerRole}]);
     console.log(players);
+    setPendingModification(false);
   }
 
   return(
     <>
-    { form ? 
+    { pendingModification ?
 
-    <form onSubmit={handleModify} className={"NewPlayerForm"}>
+    <form onSubmit={handleUpdateUser} className={"NewPlayerForm"}>
       <h2 className={"NewPlayerForm__title"}>Formulaire de modification de joueur :</h2>
 
       <label htmlFor={"last_name"}>Nom :</label>
-      <input type="text" placeholder={modify.playerLastName} id="last_name" onChange={e => setPlayerLastName(e.target.value) }></input>
+      {/* @todo le setupdate à corriger */}
+      <input type="text" value={updateUser.playerLastName} id="last_name" onChange={e => setUpdateUser(e.target.value) }></input>
       <label htmlFor={"first_name"}>Prénom :</label>
-      <input type="text" placeholder={modify.playerFirstName} id="first_name" onChange={e => setPlayerFirstName(e.target.value) }></input>
+      <input type="text" value={updateUser.playerFirstName} id="first_name" onChange={e => setUpdateUser(e.target.value) }></input>
       <label htmlFor={"age"}>Âge :</label>
-      <input type="number" placeholder={modify.playerAge} id="age" min="18" max="40" onChange={e => setPlayerAge(e.target.value) }></input>
+      <input type="number" value={updateUser.playerAge} id="age" min="18" max="40" onChange={e => setUpdateUser(e.target.value) }></input>
       <label htmlFor={"role"}>Poste :</label>
-      <input type="text" placeholder={modify.playerRole} id="role" onChange={e => setPlayerRole(e.target.value) }></input>
+      <input type="text" value={updateUser.playerRole} id="role" onChange={e => setUpdateUser(e.target.value) }></input>
       <button className={"submitButton"} type={"submit"}>Modifier le joueur</button>
     </form>
 

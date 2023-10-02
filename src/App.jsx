@@ -7,15 +7,16 @@ import { useState } from 'react';
 function App() {
 
   const [players, setPlayers] = useState([]);
-  const [form, setForm] = useState(false);
-  const [modify, setModify] = useState([]);
+  const [pendingModification, setPendingModification] = useState(false);
+  const [updateUser, setUpdateUser] = useState();
 
   return (
     <>
       <Header/>
       <main>
-        <NewPlayerForm setPlayers={setPlayers} players={players} form={form} modify={modify}/>
-        <Players players={players} setPlayers={setPlayers} form={form} setForm={setForm} modify={modify} setModify={setModify}/>
+        {/* @todo faire un objet avec les props et spreadopérator pour récupérer tout l'objet*/}
+        <NewPlayerForm players={players} setPlayers={setPlayers} pendingModification={pendingModification} setPendingModification={setPendingModification} updateUser={updateUser} setUpdateUser={setUpdateUser}/>
+        <Players players={players} setPlayers={setPlayers} pendingModification={pendingModification} setPendingModification={setPendingModification} updateUser={updateUser} setUpdateUser={setUpdateUser}/>
       </main>
     </>
   )
