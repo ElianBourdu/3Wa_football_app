@@ -8,7 +8,7 @@ function App() {
 
   const [players, setPlayers] = useState([]);
   const [pendingModification, setPendingModification] = useState(false);
-  const [updateUser, setUpdateUser] = useState();
+  const [updateUser, setUpdateUser] = useState({});
 
   return (
     <>
