@@ -28,12 +28,21 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
 
   const handleUpdateUser = (e, idPlayer) => {
     e.preventDefault();
-    console.log(idPlayer);
-    // quand on update pas, ça supprime
-    setPlayers(players.filter(player => player.idPlayer !== idPlayer));
-    console.log(players);
-    setPlayers([...players, updateUser]);
-    console.log(players);
+
+    const updatedPlayers = players.map(player => {
+      if(player.idPlayer === idPlayer)
+      {
+        return updateUser;
+      }
+      return player;
+    })
+
+    setPlayers(updatedPlayers);
+
+    // setPlayers(players.filter(player => player.idPlayer !== idPlayer));
+    // // si j'enlève le second setPlayers, la suppression fonctionne
+    // setPlayers([...players, updateUser]);
+
     setPendingModification(false);
   }
   
