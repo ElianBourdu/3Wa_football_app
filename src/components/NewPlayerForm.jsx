@@ -3,27 +3,27 @@ import { useState } from "react"
 export default function NewPlayerForm({players, setPlayers, pendingModification, setPendingModification, updateUser, setUpdateUser}) {
 
   const [idPlayer, setIdPlayer] = useState(1)
-  const [playerFirstName, setPlayerFirstName] = useState('')
-  const [playerLastName, setPlayerLastName] = useState('')
-  const [playerAge, setPlayerAge] = useState('')
-  const [playerRole, setPlayerRole] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [age, setAge] = useState('')
+  const [role, setRole] = useState('')
 
   const handleSubmit = e => {
     // @todo check input
     e.preventDefault();
     const newPlayer = {
       idPlayer, 
-      playerFirstName,
-      playerLastName,
-      playerAge,
-      playerRole
+      firstName,
+      lastName,
+      age,
+      role
     };
     setPlayers([...players, newPlayer])
     setIdPlayer(prevId => prevId + 1);
-    setPlayerFirstName('');
-    setPlayerLastName('');
-    setPlayerAge('');
-    setPlayerRole('');
+    setFirstName('');
+    setLastName('');
+    setAge('');
+    setRole('');
   }
 
   const handleUpdateUser = (e, idPlayer) => {
@@ -36,19 +36,10 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       }
       return player;
     })
-
     setPlayers(updatedPlayers);
-
-    // setPlayers(players.filter(player => player.idPlayer !== idPlayer));
-    // // si j'enlève le second setPlayers, la suppression fonctionne
-    // setPlayers([...players, updateUser]);
-
     setPendingModification(false);
   }
   
-  console.log(players);
-  // console.log(updateUser);
-
   const handleChange = (e) => {
     setUpdateUser(
       {
@@ -68,13 +59,13 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
 
       <label htmlFor={"last_name"}>Nom :</label>
       {/* @todo le setupdate à corriger */}
-      <input type="text" value={updateUser.playerLastName} name="playerLastName" onChange={handleChange}></input>
+      <input type="text" value={updateUser.lastName} name="lastName" onChange={handleChange}></input>
       <label htmlFor={"first_name"}>Prénom :</label>
-      <input type="text" value={updateUser.playerFirstName} name="playerFirstName" onChange={handleChange}></input>
+      <input type="text" value={updateUser.firstName} name="firstName" onChange={handleChange}></input>
       <label htmlFor={"age"}>Âge :</label>
-      <input type="number" value={updateUser.playerAge} name="playerAge" min="18" max="40" onChange={handleChange}></input>
+      <input type="number" value={updateUser.age} name="age" min="18" max="40" onChange={handleChange}></input>
       <label htmlFor={"role"}>Poste :</label>
-      <input type="text" value={updateUser.playerRole} name="playerRole" onChange={handleChange}></input>
+      <input type="text" value={updateUser.role} name="role" onChange={handleChange}></input>
       <button className={"submitButton"} type={"submit"}>Modifier le joueur</button>
     </form>
 
@@ -84,13 +75,13 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       <h2 className={"NewPlayerForm__title"}>Formulaire d'ajout de joueur :</h2>
 
       <label htmlFor={"last_name"}>Nom :</label>
-      <input type="text" value={playerLastName} id="last_name" onChange={e => setPlayerLastName(e.target.value) }></input>
+      <input type="text" value={lastName} id="last_name" onChange={e => setLastName(e.target.value) }></input>
       <label htmlFor={"first_name"}>Prénom :</label>
-      <input type="text" value={playerFirstName} id="first_name" onChange={e => setPlayerFirstName(e.target.value) }></input>
+      <input type="text" value={firstName} id="first_name" onChange={e => setFirstName(e.target.value) }></input>
       <label htmlFor={"age"}>Âge :</label>
-      <input type="number" value={playerAge} id="age" min="18" max="40" onChange={e => setPlayerAge(e.target.value) }></input>
+      <input type="number" value={age} id="age" min="18" max="40" onChange={e => setAge(e.target.value) }></input>
       <label htmlFor={"role"}>Poste :</label>
-      <input type="text" value={playerRole} id="role" onChange={e => setPlayerRole(e.target.value) }></input>
+      <input type="text" value={role} id="role" onChange={e => setRole(e.target.value) }></input>
       <button className={"submitButton"} type={"submit"}>Ajouter le joueur</button>
     </form>
 
