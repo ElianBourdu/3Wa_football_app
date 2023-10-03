@@ -34,13 +34,13 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
 
       <label htmlFor={"last_name"}>Nom :</label>
       {/* @todo le setupdate à corriger */}
-      <input type="text" value={updateUser.playerLastName} id="last_name" onChange={e => setUpdateUser(e.target.value) }></input>
+      <input type="text" value={updateUser.playerLastName} id="last_name" onChange={e => setUpdateUser({...updateUser, [updateUser.playerLastName]: e.target.value}) }></input>
       <label htmlFor={"first_name"}>Prénom :</label>
-      <input type="text" value={updateUser.playerFirstName} id="first_name" onChange={e => setUpdateUser(e.target.value) }></input>
+      <input type="text" value={updateUser.playerFirstName} id="first_name" onChange={e => setUpdateUser({...updateUser, [updateUser.playerFirstName]: e.target.value}) }></input>
       <label htmlFor={"age"}>Âge :</label>
-      <input type="number" value={updateUser.playerAge} id="age" min="18" max="40" onChange={e => setUpdateUser(e.target.value) }></input>
+      <input type="number" value={updateUser.playerAge} id="age" min="18" max="40" onChange={e => setUpdateUser({...updateUser, [updateUser.playerAge]: e.target.value}) }></input>
       <label htmlFor={"role"}>Poste :</label>
-      <input type="text" value={updateUser.playerRole} id="role" onChange={e => setUpdateUser(e.target.value) }></input>
+      <input type="text" value={updateUser.playerRole} id="role" onChange={e => setUpdateUser({...updateUser, [updateUser.playerRole]: e.target.value}) }></input>
       <button className={"submitButton"} type={"submit"}>Modifier le joueur</button>
     </form>
 
