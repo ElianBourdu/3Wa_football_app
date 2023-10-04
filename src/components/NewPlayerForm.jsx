@@ -9,7 +9,7 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
   const [role, setRole] = useState('')
   const [team, setTeam] = useState('')
 
-  console.log('team', team)
+  // console.log('team', team)
   const handleSubmit = e => {
     // @todo check input
     e.preventDefault();
@@ -21,7 +21,7 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       role,
       team
     };
-    console.log(newPlayer)
+    // console.log(newPlayer)
     setPlayers([...players, newPlayer])
     const updatedTeams = teams.map(t => {
       if (t.teamName === team) {
@@ -29,9 +29,9 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       }
       return t
     })
-    console.log(updatedTeams)
+    // console.log(updatedTeams)
     setTeams(updatedTeams);
-    console.log(players)
+    // console.log(players)
     setIdPlayer(prevId => prevId + 1);
     setFirstName('');
     setLastName('');
@@ -61,7 +61,7 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
         [e.target.name] : e.target.value
       }
     )
-    console.log(updateUser)
+    // console.log(updateUser)
   }
 
   return(
@@ -100,7 +100,6 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       <select name="team" id="team" onChange={e => setTeam(e.target.value)}>
         <option default>choisissez une équipe</option>
         {teams.map(team => {
-          console.log(team)
           return (
             <option key={team.teamName} value={team.teamName}>{team.teamName}</option>
           )

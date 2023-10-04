@@ -1,5 +1,5 @@
 export default function Players({players, setPlayers, pendingModification, setPendingModification, updateUser, setUpdateUser}) {
-  console.log(players)
+  // console.log(players)
   let handleDelete = (idPlayer) => {
 
     const filteredPlayers = players.filter(player => {
