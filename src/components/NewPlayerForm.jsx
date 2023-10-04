@@ -64,9 +64,11 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
     // console.log(updateUser)
   }
 
+  console.log(teams.length)
+
   return(
     <>
-    { pendingModification ?
+    { pendingModification && (
 
     <form onSubmit={(e) => handleUpdateUser(e, updateUser.idPlayer)} className={"NewPlayerForm"}>
       <h2 className={"NewPlayerForm__title"}>Formulaire de modification de joueur :</h2>
@@ -82,9 +84,11 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       <input type="text" value={updateUser.role} name="role" onChange={handleUpdateChange}></input>
       <button className={"submitButton"} type={"submit"}>Modifier le joueur</button>
     </form>
-
-    : 
-
+    )
+    }
+    {
+    teams.length > 0 && (
+    
     <form onSubmit={handleSubmit} className={"NewPlayerForm"}>
       <h2 className={"NewPlayerForm__title"}>Formulaire d'ajout de joueur :</h2>
 
@@ -107,7 +111,7 @@ export default function NewPlayerForm({players, setPlayers, pendingModification,
       </select>
       <button className="submitButton">Ajouter le joueur</button>
     </form>
-
+    )
     }
     </>
   )
