@@ -22,8 +22,8 @@ function App() {
       <main>
         {/* @todo faire un objet avec les props et spreadoperator pour récupérer tout l'objet*/}
         <NewTeamForm teams={teams} setTeams={setTeams}/>
-        <Teams teams={teams} setTeams={setTeams}/>
-        <NewPlayerForm players={players} setPlayers={setPlayers} pendingModification={pendingModification} setPendingModification={setPendingModification} updateUser={updateUser} setUpdateUser={setUpdateUser}/>
+        <Teams teams={teams} setTeams={setTeams} players={players}/>
+        <NewPlayerForm players={players} setPlayers={setPlayers} pendingModification={pendingModification} setPendingModification={setPendingModification} updateUser={updateUser} setUpdateUser={setUpdateUser} teams={teams} setTeams={setTeams}/>
         <Players players={players} setPlayers={setPlayers} pendingModification={pendingModification} setPendingModification={setPendingModification} updateUser={updateUser} setUpdateUser={setUpdateUser}/>
       </main>
     </>

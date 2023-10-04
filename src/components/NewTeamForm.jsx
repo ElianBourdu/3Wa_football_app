@@ -13,6 +13,12 @@ export default function NewTeamForm ({teams, setTeams}) {
   function handleSubmit (e) {
     e.preventDefault()
     setTeams([...teams, team])
+    setTeam({
+      teamName: "",
+      teamColor: "",
+      players: [],
+      substitutePlayers: []
+    })
   }
 
   function handleChange (e) {
